@@ -8,6 +8,8 @@
   <body>
     <div class="container">
       <h2>Login</h2>
+      <div class="validation-error" id="validation-error"></div>
+
       <form>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required />
@@ -15,7 +17,7 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required />
 
-        <button type="submit">Login</button>
+        <button type="submit" id="login-btn">Login</button>
       </form>
 
       <p class="signup-link">
@@ -23,6 +25,7 @@
       </p>
     </div>
 
+    <link rel="stylesheet" href="../assets/css/global-style.css" />
     <link rel="stylesheet" href="../assets/css/login.css" />
     <script src="../assets/js/login.js"></script>
   </body>

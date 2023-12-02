@@ -8,6 +8,8 @@
   <body>
     <div class="container">
       <h2>Sign Up</h2>
+      <div class="validation-error" id="validation-error"></div>
+
       <form>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required />
@@ -26,12 +28,13 @@
           required
         />
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" id="btn-signup">Sign Up</button>
       </form>
 
       <p>Already have an account? <a href="./login.html">Login</a></p>
     </div>
 
+    <link rel="stylesheet" href="../assets/css/global-style.css" />
     <link rel="stylesheet" href="../assets/css/signup.css" />
     <script src="../assets/js/signup.js"></script>
   </body>

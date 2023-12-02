@@ -1,3 +1,9 @@
+// user roles object
+const UserRole = {
+  ADMIN: "admin",
+  USER: "user",
+};
+
 var users = JSON.parse(localStorage.getItem("users")) || [];
 
 // get submit button and add event listener
@@ -5,7 +11,7 @@ var loginBtn = document.getElementById("login-btn");
 loginBtn.addEventListener("click", login);
 
 // login function
-function login(e) {
+async function login(e) {
   e.preventDefault();
 
   var email = document.getElementById("username").value;
@@ -17,18 +23,31 @@ function login(e) {
   }
 
   // ... check if user exists
-  var user = users.find(async function (user) {
-    var comparePasswordResult = await comparePassword(password, user.password);
-
-    if (user.email === email && comparePasswordResult === true) return user;
+  var user = users.find((item) => {
+    return item.email === email;
   });
 
-  if (user) {
-    delete user.password;
-    localStorage.setItem("currentUser", JSON.stringify(user));
-    location.href = "../../index.html";
-  } else {
+  if (!user) {
     renderError(["Wrong email or password"]);
+    return;
+  }
+
+  // ... check if password is correct
+  var comparePasswordResult = await comparePassword(password, user.password);
+  if (comparePasswordResult === false) {
+    renderError(["Wrong email or password"]);
+    return;
+  }
+
+  // store user in local storage
+  delete user.password;
+  localStorage.setItem("currentUser", JSON.stringify(user));
+  console.log(user);
+
+  if (user.role === UserRole.ADMIN) {
+    location.href = "../pages/admin/allProduct.html";
+  } else {
+    location.href = "../../index.html";
   }
 }
 

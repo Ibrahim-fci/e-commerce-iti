@@ -1,0 +1,272 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.product-details {
+    margin-top: 10px;
+}
+
+.product-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-size: 16px;
+    color: #007BFF;
+    margin-bottom: 5px;
+}
+
+.product-category {
+    font-size: 14px;
+    color: #28a745;
+    margin-bottom: 5px;
+}
+
+.product-quantity {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.product-description {
+    margin-bottom: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.update-button,
+.delete-button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-button {
+    background-color: #dc3545;
+}
+
+.add-product-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 6;
+}
+
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 8;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 80%;
+    text-align: center;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 6em;
+    z-index: 2;
+}
+
+.close-button {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-product-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.popup-container button[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: auto;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+}
+
+.file-input-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.file-input {
+    font-size: 16px;
+    color: #333;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 200px;
+    /* Adjust width as needed */
+}
+
+.file-input-label {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.file-input:hover {
+    background-color: #f0f0f0;
+}
+
+.file-input:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+.file-input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+/* ********************** product section ******************************* */
+.product-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 5em 0;
+}
+
+
+
+.product-card img {
+    width: 100%;
+    height: 300px;
+}
+
+.add-product-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ********************** Media query section ******************************* */
+
+@media only screen and (max-width: 475px) {
+    .product-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+/* mobile */
+@media only screen and (min-width: 475px) and (max-width: 768px) {
+    .product-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .product-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

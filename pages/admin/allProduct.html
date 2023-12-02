@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Products</title>
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- 
+    - #HEADER
+  -->
+
+    <header class="header" data-header>
+      <div class="container">
+        <div class="overlay" data-overlay></div>
+
+        <div class="header-search">
+          <input
+            type="search"
+            name="search"
+            placeholder="Search Product..."
+            class="input-field"
+          />
+
+          <button class="search-btn" aria-label="Search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+
+        <a href="#" class="logo">
+          <img
+            src="../../assets/images/logo.svg"
+            alt="Casmart logo"
+            width="130"
+            height="31"
+          />
+        </a>
+
+        <div class="header-actions">
+          <button class="header-action-btn">
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+            <p class="header-action-label">Sign in</p>
+          </button>
+
+          <button class="header-action-btn">
+            <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+
+            <p class="header-action-label">Search</p>
+          </button>
+        </div>
+
+        <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="navbar" data-navbar>
+          <div class="navbar-top">
+            <a href="#" class="logo">
+              <img
+                src="../..//assets/images/logo.svg"
+                alt="Casmart logo"
+                width="130"
+                height="31"
+              />
+            </a>
+
+            <button
+              class="nav-close-btn"
+              data-nav-close-btn
+              aria-label="Close Menu"
+            >
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+
+          <ul class="navbar-list">
+            <li>
+              <a href="#home" class="navbar-link">Product</a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-link">Orders</a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-link">Category</a>
+            </li>
+
+            <li>
+              <a href="#blog" class="navbar-link">Blog</a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="product-container">
+      <div class="product-card">
+        <img
+          src="../../assets/images/product-1.jpg"
+          alt="Product 1"
+          class="product-image"
+        />
+        <div class="product-details">
+          <div class="product-title">Product 1</div>
+          <div class="product-price">$19.99</div>
+          <div class="product-category">Electronics</div>
+          <div class="product-quantity">In Stock: 50 units</div>
+          <p class="product-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel
+            urna in justo vestibulum ultrices.
+          </p>
+        </div>
+        <div class="action-buttons">
+          <button class="update-button">Update</button>
+          <button class="delete-button">Delete</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="../../assets/images/product-2.jpg"
+          alt="Product 1"
+          class="product-image"
+        />
+        <div class="product-details">
+          <div class="product-title">Product 1</div>
+          <div class="product-price">$19.99</div>
+          <div class="product-category">Electronics</div>
+          <div class="product-quantity">In Stock: 50 units</div>
+          <p class="product-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel
+            urna in justo vestibulum ultrices.
+          </p>
+        </div>
+        <div class="action-buttons">
+          <button class="update-button">Update</button>
+          <button class="delete-button">Delete</button>
+        </div>
+      </div>
+    </div>
+    <!-- Add more product cards as needed -->
+
+    <button class="add-product-button" onclick="openPopup()">
+      Add Product
+    </button>
+
+    <div id="popup" class="popup-container">
+      <div class="popup-content">
+        <button class="close-button" onclick="closePopup()">Close</button>
+
+        <form class="add-product-form">
+          <div class="form-group">
+            <!-- <label for="category">Category:</label> -->
+            <select id="category" name="category" required>
+              <option value="electronics">Electronics</option>
+              <option value="clothing">Clothing</option>
+              <option value="books">Books</option>
+              <!-- Add more options as needed -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <!-- <label for="productName">Product Name:</label> -->
+            <input
+              type="text"
+              id="productName"
+              name="productName"
+              placeholder="Product Name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <!-- <label for="quantity">Quantity:</label> -->
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              placeholder="Quantity"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <!-- <label for="price">Price:</label> -->
+            <input
+              type="number"
+              id="price"
+              name="price"
+              placeholder="$"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <!-- <label for="description">Description:</label> -->
+            <textarea
+              id="description"
+              name="description"
+              rows="4"
+              required
+              placeholder="Description"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <div class="file-input-container">
+              <input
+                type="file"
+                class="file-input"
+                id="fileInput"
+                name="fileInput"
+              />
+              <label for="fileInput" class="file-input-label"
+                >Choose an image</label
+              >
+            </div>
+            <!-- <label for="image">Image URL:</label>
+            <input type="file" id="image" name="image" required /> -->
+          </div>
+
+          <button type="submit">Add Product</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="../..//assets/js/script.js"></script>
+    <!-- 
+    - ionicon link
+  -->
+
+    <link rel="stylesheet" href="../../assets/css/admin/allProduct.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script src="../../assets/js/allProduct-admin.js"></script>
+  </body>
+</html>

@@ -2,7 +2,6 @@
 const UserRole = {
   ADMIN: "admin",
   USER: "user",
-  MODERATOR: "moderator",
 };
 
 // users array from local storage

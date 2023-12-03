@@ -1,291 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Products</title>
-    <link rel="stylesheet" href="../../assets/css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- 
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Products</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- 
     - #HEADER
   -->
 
-    <header class="header" data-header>
-      <div class="container">
-        <div class="overlay" data-overlay></div>
+  <header class="header" data-header>
+    <div class="container">
+      <div class="overlay" data-overlay></div>
 
-        <div class="header-search">
-          <input
-            type="search"
-            name="search"
-            placeholder="Search Product..."
-            class="input-field"
-          />
+      <div class="header-search">
+        <input type="search" name="search" placeholder="Search Product..." class="input-field" />
 
-          <button class="search-btn" aria-label="Search">
-            <ion-icon name="search-outline"></ion-icon>
-          </button>
-        </div>
+        <button class="search-btn" aria-label="Search">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+      </div>
 
-        <a href="#" class="logo">
-          <img
-            src="../../assets/images/logo.svg"
-            alt="Casmart logo"
-            width="130"
-            height="31"
-          />
-        </a>
+      <a href="#" class="logo">
+        <img src="../../assets/images/logo.svg" alt="Casmart logo" width="130" height="31" />
+      </a>
 
-        <div class="header-actions">
-          <button class="header-action-btn">
-            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+      <div class="header-actions">
+        <button class="header-action-btn">
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
-            <p class="header-action-label">Sign in</p>
-          </button>
-
-          <button class="header-action-btn">
-            <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-
-            <p class="header-action-label">Search</p>
-          </button>
-        </div>
-
-        <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <p class="header-action-label">Sign in</p>
         </button>
 
-        <nav class="navbar" data-navbar>
-          <div class="navbar-top">
-            <a href="#" class="logo">
-              <img
-                src="../..//assets/images/logo.svg"
-                alt="Casmart logo"
-                width="130"
-                height="31"
-              />
-            </a>
+        <button class="header-action-btn">
+          <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
 
-            <button
-              class="nav-close-btn"
-              data-nav-close-btn
-              aria-label="Close Menu"
-            >
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-          </div>
-
-          <ul class="navbar-list">
-            <li>
-              <a href="#home" class="navbar-link">Product</a>
-            </li>
-
-            <li>
-              <a href="#" class="navbar-link">Orders</a>
-            </li>
-
-            <li>
-              <a href="#" class="navbar-link">Category</a>
-            </li>
-
-            <li>
-              <a href="#blog" class="navbar-link">Blog</a>
-            </li>
-
-            <li>
-              <a href="#" class="navbar-link">Contact</a>
-            </li>
-          </ul>
-        </nav>
+          <p class="header-action-label">Search</p>
+        </button>
       </div>
-    </header>
 
-    <div class="product-container" id="productsContainer"></div>
-    <!-- Add more product cards as needed -->
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-    <button class="add-product-button" onclick="openPopup()">
-      Add Product
-    </button>
+      <nav class="navbar" data-navbar>
+        <div class="navbar-top">
+          <a href="#" class="logo">
+            <img src="../..//assets/images/logo.svg" alt="Casmart logo" width="130" height="31" />
+          </a>
 
-    <!---------- Adding ProductPopup-->
-    <div id="popup" class="popup-container">
-      <div class="popup-content">
-        <button class="close-button" onclick="closePopup()">Close</button>
-
-        <div class="image-popup">
-          <div class="image-container">
-            <img
-              src="../../assets/images/category-6.jpg"
-              alt="Image"
-              id="add-popup-imageId"
-            />
-          </div>
-          <!-- Additional content or description can be added here -->
+          <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
         </div>
 
-        <form class="add-product-form">
-          <div class="form-group">
-            <div class="file-input-container">
-              <input
-                type="file"
-                class="file-input"
-                id="addPopup-file-input"
-                name="fileInput"
-                accept="image/*"
-                onchange="displayImage('addPopup-file-input', 'add-popup-imageId')"
-              />
-              <label for="fileInput" class="file-input-label"
-                >Choose an image</label
-              >
-            </div>
-            <!-- <label for="image">Image URL:</label>
-            <input type="file" id="image" name="image" required /> -->
-          </div>
+        <ul class="navbar-list">
+          <li>
+            <a href="#home" class="navbar-link">Product</a>
+          </li>
 
-          <div class="form-group">
-            <!-- <label for="productName">Product Name:</label> -->
-            <input
-              type="text"
-              id="productName"
-              name="productName"
-              placeholder="Product Name"
-              required
-            />
-          </div>
+          <li>
+            <a href="#" class="navbar-link">Orders</a>
+          </li>
 
-          <div class="form-group">
-            <!-- <label for="quantity">Quantity:</label> -->
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
-              placeholder="Quantity"
-              required
-            />
-          </div>
+          <li>
+            <a href="#" class="navbar-link">Category</a>
+          </li>
 
-          <div class="form-group">
-            <!-- <label for="price">Price:</label> -->
-            <input
-              type="number"
-              id="price"
-              name="price"
-              placeholder="$"
-              required
-            />
-          </div>
+          <li>
+            <a href="#blog" class="navbar-link">Blog</a>
+          </li>
 
-          <div class="form-group">
-            <!-- <label for="description">Description:</label> -->
-            <textarea
-              id="description"
-              name="description"
-              rows="4"
-              required
-              placeholder="Description"
-            ></textarea>
-          </div>
-
-          <button type="submit">Add Product</button>
-        </form>
-      </div>
+          <li>
+            <a href="#" class="navbar-link">Contact</a>
+          </li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <!---------------Update Product Popup-->
-    <div id="updateForm-popup" class="popup-container">
-      <div class="popup-content">
-        <button class="close-button" onclick="closeUpdatePopup()">Close</button>
+  <div class="product-container" id="productsContainer"></div>
+  <!-- Add more product cards as needed -->
 
-        <div class="image-popup">
-          <div class="image-container">
-            <img
-              src="../../assets/images/category-6.jpg"
-              alt="Image"
-              id="updateImage-popup"
-            />
+  <button class="add-product-button" onclick="openPopup()">
+    Add Product
+  </button>
+
+  <!---------- Adding ProductPopup-->
+  <div id="popup" class="popup-container">
+    <div class="popup-content">
+      <button class="close-button" onclick="closePopup()">Close</button>
+
+      <div class="image-popup">
+        <div class="image-container">
+          <img src="" alt="Image" id="add-popup-imageId" />
+        </div>
+        <!-- Additional content or description can be added here -->
+      </div>
+
+      <form class="add-product-form">
+        <div class="form-group">
+          <div class="file-input-container">
+            <input type="file" class="file-input" id="addPopup-file-input" name="fileInput" accept="image/*"
+              onchange="displayImage('addPopup-file-input', 'add-popup-imageId')" />
+            <label for="fileInput" class="file-input-label">Choose an image</label>
           </div>
-          <!-- Additional content or description can be added here -->
+          <!-- <label for="image">Image URL:</label>
+              <input type="file" id="image" name="image" required /> -->
         </div>
 
+        <div class="form-group">
+          <!-- <label for="category">Category:</label> -->
+          <select id="addProductSelectCategories" name="category" required>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="books">Books</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <!-- <label for="productName">Product Name:</label> -->
+          <input type="text" id="productName" name="productName" placeholder="Product Name" required />
+        </div>
+
+        <div class="form-group">
+          <!-- <label for="quantity">Quantity:</label> -->
+          <input type="number" id="quantity" name="quantity" placeholder="Quantity" required />
+        </div>
+
+        <div class="form-group">
+          <!-- <label for="price">Price:</label> -->
+          <input type="number" id="price" name="price" placeholder="$" required step="any"
+            oninput="validateFloat(this)" />
+        </div>
+
+        <div class="form-group">
+          <!-- <label for="description">Description:</label> -->
+          <textarea id="description" name="description" rows="4" required placeholder="Description"></textarea>
+        </div>
+
+        <button type="submit">Add Product</button>
+      </form>
+    </div>
+  </div>
+
+  <!---------------Update Product Popup-->
+  <div id="updateForm-popup" class="popup-container">
+    <div class="popup-content">
+      <button class="close-button" onclick="closeUpdatePopup()">Close</button>
+
+      <div class="image-popup">
+        <div class="image-container">
+          <img src="" alt="Image" id="updateImage-popup" />
+        </div>
+        <!-- Additional content or description can be added here -->
+      </div>
+
+      <div>
         <form class="add-product-form" id="updateForm">
           <div class="form-group">
             <div class="file-input-container">
-              <input
-                type="file"
-                class="file-input"
-                id="update-popup-fileInput"
-                name="fileInput"
-                accept="image/*"
-                onchange="displayImage('update-popup-fileInput', 'updateImage-popup')"
-              />
-              <label for="fileInput" class="file-input-label"
-                >Choose an image</label
-              >
+              <input type="file" class="file-input" id="update-popup-fileInput" name="fileInput" accept="image/*"
+                onchange="displayImage('update-popup-fileInput', 'updateImage-popup')" />
+              <label for="fileInput" class="file-input-label">Choose an image</label>
             </div>
             <!-- <label for="image">Image URL:</label>
             <input type="file" id="image" name="image" required /> -->
           </div>
           <div class="form-group">
             <!-- <label for="category">Category:</label> -->
-            <select
-              id="uppdateProductSelectCategories"
-              name="category"
-              required
-            ></select>
+            <select id="uppdateProductSelectCategories" name="category" required></select>
           </div>
 
           <div class="form-group">
             <!-- <label for="productName">Product Name:</label> -->
-            <input
-              type="text"
-              id="productName"
-              name="productName"
-              placeholder="Product Name"
-              required
-            />
+            <input type="text" id="productName" name="productName" placeholder="Product Name" required />
           </div>
 
           <div class="form-group">
             <!-- <label for="quantity">Quantity:</label> -->
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
-              placeholder="Quantity"
-              required
-            />
+            <input type="number" id="quantity" name="quantity" placeholder="Quantity" required />
           </div>
 
           <div class="form-group">
             <!-- <label for="price">Price:</label> -->
-            <input
-              type="number"
-              id="price"
-              name="price"
-              placeholder="$"
-              required
-            />
+            <input type="number" id="price" name="price" placeholder="$" required step="any"
+              oninput="validateFloat(this)" />
           </div>
 
           <div class="form-group">
             <!-- <label for="description">Description:</label> -->
-            <textarea
-              id="description"
-              name="description"
-              rows="4"
-              required
-              placeholder="Description"
-            ></textarea>
+            <textarea id="description" name="description" rows="4" required placeholder="Description"></textarea>
           </div>
 
-          <button type="submit">Update Product</button>
+          <input type="hidden" id="productId" name="productId" />
+
+          <button type="submit" id="updateProduct-submit-btn">
+            Update Product
+          </button>
         </form>
       </div>
     </div>
@@ -310,21 +230,17 @@
       </div>
     </div>
 
-    <script src="../..//assets/js/script.js"></script>
     <!-- 
     - ionicon link
   -->
+    <link rel="stylesheet" href="../../assets/css/style.css" />
 
     <link rel="stylesheet" href="../../assets/css/admin/allProduct.css" />
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+    <script src="../..//assets/js/script.js"></script>
     <script src="../../scripts/admin/allProducts.js"></script>
-  </body>
+</body>
+
 </html>

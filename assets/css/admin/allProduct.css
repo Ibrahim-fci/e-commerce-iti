@@ -56,7 +56,7 @@ body {
 .action-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+
 }
 
 .update-button,
@@ -97,6 +97,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 8;
+
 }
 
 .popup-content {
@@ -109,6 +110,23 @@ body {
     overflow-y: auto;
     margin-top: 6em;
     z-index: 2;
+
+}
+
+#updateForm-popup .popup-content,
+#popup .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 80%;
+    text-align: center;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 6em;
+    z-index: 2;
+    min-width: 30em;
+    min-height: 50em;
+    position: relative;
 }
 
 .close-button {
@@ -118,6 +136,7 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    z-index: 6;
 }
 
 .add-product-form {
@@ -129,6 +148,8 @@ body {
     width: 100%;
     text-align: center;
 }
+
+
 
 .form-group {
     margin-bottom: 20px;
@@ -249,6 +270,7 @@ image popup
 .image-container {
     position: relative;
     margin-bottom: 20px;
+    margin-top: 2em;
 }
 
 .close-button {
@@ -267,7 +289,7 @@ img {
     width: 100%;
     height: auto;
     border-radius: 4px;
-    max-height: 200px;
+    max-height: 400px;
 
 }
 
@@ -328,12 +350,12 @@ img {
 /* mobile */
 @media only screen and (min-width: 475px) and (max-width: 768px) {
     .product-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     .product-container {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }

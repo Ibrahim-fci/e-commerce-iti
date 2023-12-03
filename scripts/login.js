@@ -47,7 +47,7 @@ async function login(e) {
   if (user.role === UserRole.ADMIN) {
     location.href = "../pages/admin/allProduct.html";
   } else {
-    location.href = "../../index.html";
+    location.href = "../index.html";
   }
 }
 

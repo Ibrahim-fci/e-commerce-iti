@@ -13,28 +13,34 @@ function renderProducts() {
   var productsContainer = document.getElementById("productsContainer");
   var products = getAllProducts();
 
-  productsContainer.innerHTML += products.map((product) => {
+  productsContainer.innerHTML = "";
+
+  var productCards = products.map((product) => {
     return `
-        <div class="product-card">
-            <img
-            src="${product.image}"
-            alt="${product.title}"
-            class="product-image"
-            />
-            <div class="product-details">
-            <div class="product-title">${product.title}</div>
-            <div class="product-price">$${product.price}</div>
-            <div class="product-category">${product.category}</div>
-            <div class="product-quantity">In Stock: ${product.quantity} units</div>
-            <p class="product-description">
-                ${product.description}
-            </p>
-            <div class="action-buttons">
-                <button class="update-button" onclick="updatePopup(${product.id})">Update</button>
-                <button class="delete-button" onclick="deletePopup(${product.id})">Delete</button>
-            </div>
-        </div>`;
+    <div class="product-card">
+      <img
+        src="${product.image}"
+        alt="${product.title}"
+        class="product-image"
+      />
+      <div class="product-details">
+        <div class="product-title">${product.title}</div>
+        <div class="product-price">$${product.price}</div>
+        <div class="product-category">${product.category}</div>
+        <div class="product-quantity">
+          In Stock: ${product.quantity} units
+        </div>
+          <p class="product-description">${product.description}</p>
+          <div class="action-buttons">
+          <button class="update-button" onclick="updatePopup(${product.id})">Update</button>
+          <button class="delete-button" onclick="deletePopup(${product.id})">Delete</button>
+        </div>
+      </div>
+    </div>
+    `;
   });
+
+  productsContainer.innerHTML = productCards.join("");
 }
 
 function getAllProducts() {
@@ -79,6 +85,7 @@ function updatePopup(id) {
   updateForm.price.value = product.price;
   updateForm.quantity.value = product.quantity;
   updateForm.description.value = product.description;
+  updateForm.productId.value = product.id;
   image.setAttribute("src", product.image);
 
   // select the category
@@ -98,7 +105,7 @@ function closeUpdatePopup() {
 
 //Delete Product popup
 
-function deletePopup() {
+function deletePopup(id) {
   document.getElementById("delete-popup").style.display = "flex";
 }
 
@@ -160,5 +167,49 @@ function displayImage(inputFileId, imgElementId) {
     // Display the URL
     imgElement.setAttribute("src", imageURL);
     console.log(imgElement.getAttribute("src"));
+    console.log(selectedFile.name);
   }
 }
+
+function validateFloat(input) {
+  // Remove any non-numeric characters except dot (.)
+  input.value = input.value.replace(/[^0-9.]/g, "");
+
+  // Ensure that there's at most one dot
+  var dotCount = input.value.split(".").length - 1;
+  if (dotCount > 1) {
+    // If more than one dot, remove the extra dots
+    input.value = input.value.slice(0, input.value.lastIndexOf("."));
+  }
+}
+
+/******************************************************** UPDATE PRODUCT FUNCTION **************************************** */
+function updateProduct() {
+  //   e.preventDefault();
+  var updateForm = document.getElementById("updateForm");
+  var updateImagePopup = document.getElementById("updateImage-popup");
+  var products = getAllProducts();
+  var product = getProduct(updateForm.productId.value);
+
+  product.title = updateForm.productName.value;
+  product.price = updateForm.price.value;
+  product.quantity = updateForm.quantity.value;
+  product.description = updateForm.description.value;
+  product.category = updateForm.category.value;
+  product.image = updateImagePopup.getAttribute("src");
+
+  var index = products.findIndex(
+    (product) => product.id === parseInt(updateForm.productId.value)
+  );
+
+  console.log(index);
+
+  products[index] = product;
+  console.log(products);
+
+  localStorage.setItem("products", JSON.stringify(products));
+  renderProducts();
+}
+
+var updateSubmitBtn = document.getElementById("updateProduct-submit-btn");
+updateSubmitBtn.addEventListener("click", updateProduct);

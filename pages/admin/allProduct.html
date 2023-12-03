@@ -121,7 +121,11 @@
 
         <div class="image-popup">
           <div class="image-container">
-            <img src="../../assets/images/category-6.jpg" alt="Image" />
+            <img
+              src="../../assets/images/category-6.jpg"
+              alt="Image"
+              id="add-popup-imageId"
+            />
           </div>
           <!-- Additional content or description can be added here -->
         </div>
@@ -132,8 +136,10 @@
               <input
                 type="file"
                 class="file-input"
-                id="fileInput"
+                id="addPopup-file-input"
                 name="fileInput"
+                accept="image/*"
+                onchange="displayImage('addPopup-file-input', 'add-popup-imageId')"
               />
               <label for="fileInput" class="file-input-label"
                 >Choose an image</label
@@ -141,15 +147,6 @@
             </div>
             <!-- <label for="image">Image URL:</label>
             <input type="file" id="image" name="image" required /> -->
-          </div>
-          <div class="form-group">
-            <!-- <label for="category">Category:</label> -->
-            <select id="category" name="category" required>
-              <option value="electronics">Electronics</option>
-              <option value="clothing">Clothing</option>
-              <option value="books">Books</option>
-              <!-- Add more options as needed -->
-            </select>
           </div>
 
           <div class="form-group">
@@ -208,19 +205,25 @@
 
         <div class="image-popup">
           <div class="image-container">
-            <img src="../../assets/images/category-6.jpg" alt="Image" />
+            <img
+              src="../../assets/images/category-6.jpg"
+              alt="Image"
+              id="updateImage-popup"
+            />
           </div>
           <!-- Additional content or description can be added here -->
         </div>
 
-        <form class="add-product-form">
+        <form class="add-product-form" id="updateForm">
           <div class="form-group">
             <div class="file-input-container">
               <input
                 type="file"
                 class="file-input"
-                id="fileInput"
+                id="update-popup-fileInput"
                 name="fileInput"
+                accept="image/*"
+                onchange="displayImage('update-popup-fileInput', 'updateImage-popup')"
               />
               <label for="fileInput" class="file-input-label"
                 >Choose an image</label
@@ -231,12 +234,11 @@
           </div>
           <div class="form-group">
             <!-- <label for="category">Category:</label> -->
-            <select id="category" name="category" required>
-              <option value="electronics">Electronics</option>
-              <option value="clothing">Clothing</option>
-              <option value="books">Books</option>
-              <!-- Add more options as needed -->
-            </select>
+            <select
+              id="uppdateProductSelectCategories"
+              name="category"
+              required
+            ></select>
           </div>
 
           <div class="form-group">

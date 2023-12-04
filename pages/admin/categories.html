@@ -130,8 +130,8 @@
             <!-- <label for="productName">Product Name:</label> -->
             <input
               type="text"
-              id="productName"
-              name="productName"
+              id="categoryName"
+              name="categoryName"
               placeholder="Category Name"
               required
             />
@@ -160,7 +160,11 @@
               required
             />
           </div>
-          <input type="hidden" id="update-productId-input" name="productId" />
+          <input
+            type="hidden"
+            id="update-productId-input"
+            name="update-productId-input"
+          />
 
           <button type="submit" id="updateCategoryBtn">Update Category</button>
         </form>
@@ -174,11 +178,12 @@
         <div class="confirmation-box">
           <p class="confirmation-message">
             Are you sure you want to delete
-            <span id="delete-productName">this product</span> ?
+            <span id="delete-categoryName">this product</span> ?
           </p>
+          <input type="hidden" id="delete-categort-hidden-input" />
           <div class="confirmation-buttons">
             <input type="hidden" id="delete-productId-input" name="productId" />
-            <button class="confirm-button" onclick="deleteProduct()">
+            <button class="confirm-button" onclick="deleteCategory()">
               Delete
             </button>
             <button class="cancel-button" onclick="closeDeletePopup()">

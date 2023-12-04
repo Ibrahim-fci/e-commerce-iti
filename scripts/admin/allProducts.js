@@ -3,7 +3,7 @@ var currentUser = JSON.parse(localStorage.getItem("currentUser"))
   ? JSON.parse(localStorage.getItem("currentUser"))
   : null;
 
-if (!currentUser || currentUser == null) {
+if (!currentUser || currentUser == null || currentUser.role != "admin") {
   location.href = "../../pages/login.html";
 }
 
@@ -313,3 +313,66 @@ function signout() {
   localStorage.removeItem("currentUser");
   window.location.href = "../../pages/login.html";
 }
+
+/******************************************************** Search FUNCTION **************************************** */
+
+function search() {
+  var searchInput = document.getElementById("search-input").value;
+  var products = getAllProducts();
+
+  var filteredProducts = products.filter(function (product) {
+    if (product.title.toLowerCase().includes(searchInput.toLowerCase())) {
+      return product;
+    } else if (
+      product.category.toLowerCase().includes(searchInput.toLowerCase())
+    ) {
+      return product;
+    } else if (
+      product.description.toLowerCase().includes(searchInput.toLowerCase())
+    ) {
+      return product;
+    } else if (product.price == searchInput) {
+      return product;
+    }
+  });
+
+  renderFilteredProducts(filteredProducts);
+}
+
+function renderFilteredProducts(products) {
+  var productsContainer = document.getElementById("productsContainer");
+
+  productsContainer.innerHTML = "";
+
+  var productCards = products.map((product) => {
+    return `
+    <div class="product-card">
+      <img
+        src="${product.image}"
+        alt="${product.title}"
+        class="product-image"
+        onclick="updatePopup(${product.id})"
+
+      />
+      <div class="product-details">
+        <div class="product-title">${product.title}</div>
+        <div class="product-price">$${product.price}</div>
+        <div class="product-category">${product.category}</div>
+        <div class="product-quantity">
+          In Stock: ${product.quantity} units
+        </div>
+          <p class="product-description">${product.description}</p>
+          <div class="action-buttons">
+          <button class="update-button" onclick="updatePopup(${product.id})">Update</button>
+          <button class="delete-button" onclick="deletePopup(${product.id})">Delete</button>
+        </div>
+      </div>
+    </div>
+    `;
+  });
+
+  productsContainer.innerHTML = productCards.join("");
+}
+
+var searchInput = document.getElementById("search-input");
+searchInput.addEventListener("input", search);

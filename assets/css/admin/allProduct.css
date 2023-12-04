@@ -290,6 +290,7 @@ img {
     height: auto;
     border-radius: 4px;
     max-height: 400px;
+    cursor: pointer;
 
 }
 

@@ -22,6 +22,8 @@ function renderProducts() {
         src="${product.image}"
         alt="${product.title}"
         class="product-image"
+        onclick="updatePopup(${product.id})"
+
       />
       <div class="product-details">
         <div class="product-title">${product.title}</div>
@@ -106,6 +108,12 @@ function closeUpdatePopup() {
 //Delete Product popup
 
 function deletePopup(id) {
+  var product = getProduct(id);
+  var deleteInputId = document.getElementById("delete-productId-input");
+  var deleteProductName = document.getElementById("delete-productName");
+
+  deleteInputId.value = id;
+  deleteProductName.innerHTML = product.title;
   document.getElementById("delete-popup").style.display = "flex";
 }
 
@@ -166,8 +174,6 @@ function displayImage(inputFileId, imgElementId) {
 
     // Display the URL
     imgElement.setAttribute("src", imageURL);
-    console.log(imgElement.getAttribute("src"));
-    console.log(selectedFile.name);
   }
 }
 
@@ -213,3 +219,97 @@ function updateProduct() {
 
 var updateSubmitBtn = document.getElementById("updateProduct-submit-btn");
 updateSubmitBtn.addEventListener("click", updateProduct);
+
+/******************************************************** Delete PRODUCT FUNCTION **************************************** */
+
+function deleteProduct() {
+  var deleteInputId = document.getElementById("delete-productId-input").value;
+  var products = getAllProducts();
+  var index = products.findIndex(
+    (product) => product.id === parseInt(deleteInputId)
+  );
+
+  //delete product by index
+  products.splice(index, 1);
+
+  localStorage.setItem("products", JSON.stringify(products));
+  renderProducts();
+
+  closeDeletePopup();
+}
+
+/******************************************************** Add PRODUCT FUNCTION **************************************** */
+
+function addProduct() {
+  console.log(validateAddProductFormData());
+  // validate data
+  if (validateAddProductFormData() === false) {
+    return;
+  }
+
+  var image = document.getElementById("add-popup-imageId");
+  var addForm = document.getElementById("addForm");
+  var products = getAllProducts();
+
+  //add product
+  products.push({
+    id: getLastId() + 1,
+    title: addForm.productName.value,
+    price: addForm.price.value,
+    quantity: addForm.quantity.value,
+    description: addForm.description.value,
+    category: addForm.category.value,
+    image: image.getAttribute("src"),
+  });
+
+  localStorage.setItem("products", JSON.stringify(products));
+  renderProducts();
+
+  closePopup();
+}
+
+var addProductBtn = document.getElementById("addProductBtn");
+addProductBtn.addEventListener("click", addProduct);
+
+/// func t o get last id in products collection
+function getLastId() {
+  var products = getAllProducts();
+  var maxnum = 0;
+  for (var i = 0; i < products.length; i++) {
+    if (products[i].id > maxnum) {
+      maxnum = products[i].id;
+    }
+  }
+
+  return maxnum;
+}
+
+// func to validate form data
+function validateAddProductFormData() {
+  var addForm = document.getElementById("addForm");
+
+  var productName = addForm.productName.value;
+  var price = addForm.price.value;
+  var quantity = addForm.quantity.value;
+  var description = addForm.description.value;
+  var category = addForm.category.value;
+
+  if (
+    productName == "" ||
+    price == "" ||
+    quantity == "" ||
+    description == "" ||
+    category == ""
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+/******************************************************** Sign Out FUNCTION **************************************** */
+
+function signout() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "../../pages/login.html";
+}

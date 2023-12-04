@@ -159,3 +159,10 @@ function deleteCategory() {
   closeDeletePopup();
   renderCategories();
 }
+
+/******************************************************** Sign Out FUNCTION **************************************** */
+
+function signout() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "../../pages/login.html";
+}

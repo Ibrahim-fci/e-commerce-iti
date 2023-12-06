@@ -1,24 +1,5 @@
-/*-----------------------------------*\
- * #style.css
-\*-----------------------------------*/
-
-/**
- * copyright 2022 codewithsadee
- */
-
-
-
-
-
-/*-----------------------------------*\
- * #CUSTOM PROPERTY
-\*-----------------------------------*/
 
 :root {
-
-  /**
-   * colors
-   */
 
   --middle-blue-green: hsl(176, 35%, 63%);
   --sonic-silver: hsl(0, 0%, 44%);
@@ -28,10 +9,6 @@
   --cultured: hsl(0, 0%, 96%);
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
-
-  /**
-   * typography
-   */
 
   --ff-jost: "Jost", sans-serif;
 

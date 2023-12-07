@@ -60,8 +60,8 @@ var displayproducts
         <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
         <h3>${"$"+ item.price}</h3>
         <span style="display:none;">${item.rating.count}</span>
-        <button id="btn-action" onclick="addtocart(${item.id})>Add to card</button>
-        <button class="btn-icon" onclick="addtoWishlisht(${item.id})><ion-icon name="heart-outline" class="fav-icon"></ion-icon></button>
+        <button id="btn-action" onclick="addtocart(${item.id})">Add to card</button>
+        <button class="btn-icon" onclick="addtoWishlisht(${item.id})"><ion-icon name="heart-outline" class="fav-icon"></ion-icon></button>
       </div>
     </div>
     </div>
@@ -125,15 +125,15 @@ function addtocart(id){
 let Wishlisht= document.querySelector("#Wishlisht")
 let Wishlishtnum=document.querySelector("#Wishlishtbadge");  
 let addedWishlisht=localStorage.getItem("Wishlishtlist") ? JSON.parse(localStorage.getItem("Wishlishtlist")) : [];
-Wishlishtnum.innerHTML+=addeditems.length
+Wishlishtnum.innerHTML+=addedWishlisht.length
 Wishlisht.addEventListener("click",function(){
   window.location="../pages/cart.html";
 })
 function addtoWishlisht(id){
   let choosenItem=products.find((product)=>product.id===id)
-  addeditems=[...addeditems,choosenItem]
+  addedWishlisht=[...addedWishlisht,choosenItem]
   localStorage.setItem("Wishlishtlist",JSON.stringify(addeditems))
-  productnum.innerHTML=addeditems.length
+  Wishlishtnum.innerHTML=addedWishlisht.length
   
 }
 

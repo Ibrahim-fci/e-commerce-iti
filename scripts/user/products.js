@@ -60,8 +60,8 @@ displayproducts = function (products = []) {
           <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
           <h3>${"$" + item.price}</h3>
           <span style="display:none;">${item.rating.count}</span>
-          <button id="btn-action">Add to card</button>
-          <button class="btn-icon"><ion-icon name="heart-outline" class="fav-icon"></ion-icon></button>
+          <button id="btn-action" onclick="addtocart(${item.id})">Add to card</button>
+          <button class="btn-icon" onclick="addtoWishlisht(${item.id})"><ion-icon name="heart-outline" class="fav-icon"></ion-icon></button>
         </div>
       </div>
       </div>
@@ -101,6 +101,43 @@ function filterProduct(value) {
 }
 
 displayproducts(products);
+
+//add to cart 
+let cart= document.querySelector("#Cart")
+let productnum=document.querySelector("#badge");  
+let addeditems=localStorage.getItem("productsincart") ? JSON.parse(localStorage.getItem("productsincart")) : [];
+productnum.innerHTML+=addeditems.length
+cart.addEventListener("click",function(){
+  window.location="cart.html";
+})
+function addtocart(id){
+  let choosenItem=products.find((product)=>product.id===id)
+  addeditems=[...addeditems,choosenItem]
+  localStorage.setItem("productsincart",JSON.stringify(addeditems))
+  productnum.innerHTML=addeditems.length
+  
+}
+//add to Wishlisht 
+let Wishlisht= document.querySelector("#Wishlisht")
+let Wishlishtnum=document.querySelector("#Wishlishtbadge");  
+let addedWishlisht=localStorage.getItem("Wishlishtlist") ? JSON.parse(localStorage.getItem("Wishlishtlist")) : [];
+Wishlishtnum.innerHTML+=addedWishlisht.length
+Wishlisht.addEventListener("click",function(){
+  window.location="Wishlisht.html";
+})
+function addtoWishlisht(id){
+  let choosenItem=products.find((product)=>product.id===id)
+  addedWishlisht=[...addedWishlisht,choosenItem]
+  localStorage.setItem("Wishlishtlist",JSON.stringify(addedWishlisht))
+  Wishlishtnum.innerHTML=addedWishlisht.length
+  
+}
+
+
+
+
+
+
 
 /******************************************************** Sign Out FUNCTION **************************************** */
 

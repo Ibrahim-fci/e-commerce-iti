@@ -31,7 +31,7 @@ async function signup(e) {
     username: username,
     email: email,
     password: await hashPassword(password),
-    role: UserRole.ADMIN,
+    role: UserRole.USER,
   });
 
   // store users array in local storage

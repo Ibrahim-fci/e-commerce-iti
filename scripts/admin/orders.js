@@ -102,14 +102,14 @@ function acceptOrder(id) {
     order.products.map((product) => {
       quantity = product.quantity;
       product = getProduct(product.id);
-      if (!product.stockQuantity || product.stockQuantity < quantity) {
+      if (!product.quantity || product.quantity < quantity) {
         alert("Not enough stock");
         return;
       }
       order.status = "accepted";
 
       // decrease stock
-      product.stockQuantity -= quantity;
+      product.quantity -= quantity;
       localStorage.setItem("products", JSON.stringify(products));
     });
   } else {
@@ -119,7 +119,7 @@ function acceptOrder(id) {
       product = getProduct(product.id);
 
       // increase stock
-      product.stockQuantity += quantity;
+      product.quantity += quantity;
       localStorage.setItem("products", JSON.stringify(products));
     });
   }

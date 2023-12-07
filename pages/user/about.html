@@ -169,6 +169,13 @@
 
   <script src="../..//assets/js/script.js"></script>
     <link rel="stylesheet" href="../../assets/css/user/about.css" />
+    <script>
+      function signout() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "../../pages/login.html";
+}
+
+    </script>
   </body>
 </html>
 

@@ -33,7 +33,7 @@ function getProducts() {
 }
 
 // Call the function
-// getProducts();
+getProducts();
 
 //saved data in local storage and retrive it
 

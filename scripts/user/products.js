@@ -51,23 +51,24 @@ var displayproducts;
 displayproducts = function (products = []) {
   var prodctList = products.map((item) => {
     return `
-    <div class="products">
-    <div class="product-item">
-      <span style="display:none;">${item.id}</span>
-      <span style="display:none;">${item.title}</span>
-      <img src="${item.image}" alt="prodct" class="product-item-image>
-      <div class="product-info">
-        <h2>${item.category}</h2>
-        <span style="display:none;">${item.description}</span>
-        <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-        <h3>${"$" + item.price}</h3>
-        <span style="display:none;">${item.rating.count}</span>
-        <button id="btn-action" onclick="addtocart(${
-          item.id
-        })">Add to card</button>
-        <button class="btn-icon" onclick="addtoWishlisht(${
-          item.id
-        })"><ion-icon name="heart-outline" class="fav-icon"></ion-icon></button>
+      <div class="products">
+      <div class="product-item">
+        <span style="display:none;">${item.id}</span>
+        <span style="display:none;">${item.title}</span>
+        <img src="${item.image}" alt="prodct" class="product-item-image>
+        <div class="product-info">
+          <h2>${item.category}</h2>
+          <span style="display:none;">${item.description}</span>
+          <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+          <h3>${"$" + item.price}</h3>
+          <span style="display:none;">${item.rating.count}</span>
+          <button id="btn-action" onclick="addtocart(${
+            item.id
+          })">Add to card</button>
+          <button class="btn-icon" onclick="addtoWishlisht(${
+            item.id
+          })"><ion-icon name="heart-outline" class="fav-icon"></ion-icon></button>
+        </div>
       </div>
     </div>
     </div>
@@ -116,17 +117,11 @@ let addeditems = localStorage.getItem("productsincart")
   : [];
 productnum.innerHTML += addeditems.length;
 cart.addEventListener("click", function () {
-  window.location = "../pages/cart.html";
+  window.location = "cart.html";
 });
 function addtocart(id) {
   let choosenItem = products.find((product) => product.id === id);
-  // addeditems = [...addeditems, ...choosenItem];
-  isLogin();
-  addeditems.push({
-    ...choosenItem,
-    quantity: 1,
-    userEmail: currentUser.email,
-  });
+  addeditems = [...addeditems, choosenItem];
   localStorage.setItem("productsincart", JSON.stringify(addeditems));
   productnum.innerHTML = addeditems.length;
 }
@@ -138,12 +133,12 @@ let addedWishlisht = localStorage.getItem("Wishlishtlist")
   : [];
 Wishlishtnum.innerHTML += addedWishlisht.length;
 Wishlisht.addEventListener("click", function () {
-  window.location = "../pages/cart.html";
+  window.location = "Wishlisht.html";
 });
 function addtoWishlisht(id) {
   let choosenItem = products.find((product) => product.id === id);
   addedWishlisht = [...addedWishlisht, choosenItem];
-  localStorage.setItem("Wishlishtlist", JSON.stringify(addeditems));
+  localStorage.setItem("Wishlishtlist", JSON.stringify(addedWishlisht));
   Wishlishtnum.innerHTML = addedWishlisht.length;
 }
 

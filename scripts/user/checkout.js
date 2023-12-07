@@ -82,6 +82,7 @@ function createOrder() {
 
   // redirect to all order page
   location.href = "../../pages/user/previous-orders.html";
+  window.location.href = "../../pages/user/previous-orders.html";
 }
 
 var placeOrderBtn = document.getElementById("placeOrderBtn");
@@ -107,4 +108,9 @@ function getAllProductsIdesFromCart() {
 function signout() {
   localStorage.removeItem("currentUser");
   window.location.href = "../../pages/login.html";
+}
+
+///
+function showCart() {
+  location.href = "../../pages/user/cart.html";
 }

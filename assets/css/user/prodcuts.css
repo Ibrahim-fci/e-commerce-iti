@@ -173,3 +173,23 @@
     opacity: 1;
     transform: translateX(-10%);
     }   */
+
+
+.checkout {
+    padding: 1em 2em;
+    font-size: 1em;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    position: fixed;
+    bottom: 10em;
+    right: 0em;
+}
+
+.checkout:hover {
+    background-color: #2980b9;
+}

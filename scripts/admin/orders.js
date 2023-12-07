@@ -102,8 +102,13 @@ function acceptOrder(id) {
     order.products.map((product) => {
       quantity = product.quantity;
       product = getProduct(product.id);
-      if (!product.quantity || product.quantity < quantity) {
-        alert("Not enough stock");
+      console.log(product.quantity, quantity);
+      if (
+        !product.quantity ||
+        parseInt(product.quantity) < 0 ||
+        parseInt(product.quantity) < parseInt(quantity)
+      ) {
+        // alert(` ${product.title} Not enough stock`);
         return;
       }
       order.status = "accepted";

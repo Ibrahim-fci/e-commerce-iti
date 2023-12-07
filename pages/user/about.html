@@ -49,7 +49,7 @@
            
           </button>
 
-          <button class="header-action-btn">
+          <button class="header-action-btn" onclick="showCart()">
             <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
 
             <p class="header-action-label">Cart</p>
@@ -171,9 +171,9 @@
     <link rel="stylesheet" href="../../assets/css/user/about.css" />
     <script>
       function signout() {
-  localStorage.removeItem("currentUser");
-  window.location.href = "../../pages/login.html";
-}
+        localStorage.removeItem("currentUser");
+        window.location.href = "../../pages/login.html";
+      }
 
     </script>
   </body>

@@ -42,7 +42,7 @@ function renderorders() {
             <img src="${product.image}" alt="${product.title}" />
             <span class="title">${product.title}</span>
             <span class="description">${product.description}</span>
-            <span class="quantity">Quantity: ${product.quantity}</span>
+            <span class="quantity">Quantity: ${quantity}</span>
             <span class="price">Price: ${product.price}</span>
           </div>
           `;
@@ -81,4 +81,9 @@ function getProduct(id) {
     : [];
 
   return products.find((product) => product.id == id);
+}
+
+//
+function showCart() {
+  location.href = "../../pages/user/cart.html";
 }

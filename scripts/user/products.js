@@ -121,7 +121,13 @@ cart.addEventListener("click", function () {
 });
 function addtocart(id) {
   let choosenItem = products.find((product) => product.id === id);
-  addeditems = [...addeditems, choosenItem];
+  // addeditems = [...addeditems, choosenItem];
+  isLogin();
+  addeditems.push({
+    ...choosenItem,
+    quantity: 1,
+    userEmail: currentUser.email,
+  });
   localStorage.setItem("productsincart", JSON.stringify(addeditems));
   productnum.innerHTML = addeditems.length;
 }
@@ -159,4 +165,9 @@ function isLogin() {
   if (!currentUser || currentUser == null) {
     location.href = "../../pages/login.html";
   }
+}
+
+///
+function showCart() {
+  location.href = "../../pages/user/cart.html";
 }

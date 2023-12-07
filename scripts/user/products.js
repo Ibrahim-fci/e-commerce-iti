@@ -101,3 +101,10 @@ function filterProduct(value) {
 }
 
 displayproducts(products);
+
+/******************************************************** Sign Out FUNCTION **************************************** */
+
+function signout() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "../../pages/login.html";
+}

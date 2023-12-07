@@ -49,23 +49,27 @@ var displayproducts;
 displayproducts = function (products = []) {
   var prodctList = products.map((item) => {
     return `
-      <div class="products">
-      <div class="product-item">
-        <span style="display:none;">${item.id}</span>
-        <span style="display:none;">${item.title}</span>
-        <img src="${item.image}" alt="prodct" class="product-item-image>
-        <div class="product-info">
-          <h2>${item.category}</h2>
-          <span style="display:none;">${item.description}</span>
-          <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-          <h3>${"$" + item.price}</h3>
-          <span style="display:none;">${item.rating.count}</span>
-          <button id="btn-action">Add to card</button>
-          <button class="btn-icon"><ion-icon name="heart-outline" class="fav-icon"></ion-icon></button>
-        </div>
+    <div class="products">
+    <div class="product-item">
+      <span style="display:none;">${item.id}</span>
+      <span style="display:none;">${item.title}</span>
+      <img src="${item.image}" alt="prodct" class="product-item-image>
+      <div class="product-info">
+        <h2>${item.category}</h2>
+        <span style="display:none;">${item.description}</span>
+        <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+        <h3>${"$" + item.price}</h3>
+        <span style="display:none;">${item.rating.count}</span>
+        <button id="btn-action" onclick="addtocart(${
+          item.id
+        })">Add to card</button>
+        <button class="btn-icon" onclick="addtoWishlisht(${
+          item.id
+        })"><ion-icon name="heart-outline" class="fav-icon"></ion-icon></button>
       </div>
-      </div>
-      `;
+    </div>
+    </div>
+    `;
   });
   productDiv.innerHTML = prodctList;
 };
@@ -73,7 +77,7 @@ products;
 
 //to search on item
 function searchitem(title, searcharr) {
-  if (title == "all") {
+  if (title === "") {
     displayproducts(products);
   } else {
     let arr = searcharr.filter((item) => item.category === title);
@@ -101,6 +105,40 @@ function filterProduct(value) {
 }
 
 displayproducts(products);
+
+//add to cart
+let cart = document.querySelector("#Cart");
+let productnum = document.querySelector("#badge");
+let addeditems = localStorage.getItem("productsincart")
+  ? JSON.parse(localStorage.getItem("productsincart"))
+  : [];
+productnum.innerHTML += addeditems.length;
+cart.addEventListener("click", function () {
+  window.location = "../pages/cart.html";
+});
+function addtocart(id) {
+  let choosenItem = products.find((product) => product.id === id);
+  // addeditems = [...addeditems, ...choosenItem];
+  addeditems.push({ ...choosenItem, amount: 1 });
+  localStorage.setItem("productsincart", JSON.stringify(addeditems));
+  productnum.innerHTML = addeditems.length;
+}
+//add to Wishlisht
+let Wishlisht = document.querySelector("#Wishlisht");
+let Wishlishtnum = document.querySelector("#Wishlishtbadge");
+let addedWishlisht = localStorage.getItem("Wishlishtlist")
+  ? JSON.parse(localStorage.getItem("Wishlishtlist"))
+  : [];
+Wishlishtnum.innerHTML += addedWishlisht.length;
+Wishlisht.addEventListener("click", function () {
+  window.location = "../pages/cart.html";
+});
+function addtoWishlisht(id) {
+  let choosenItem = products.find((product) => product.id === id);
+  addedWishlisht = [...addedWishlisht, choosenItem];
+  localStorage.setItem("Wishlishtlist", JSON.stringify(addeditems));
+  Wishlishtnum.innerHTML = addedWishlisht.length;
+}
 
 /******************************************************** Sign Out FUNCTION **************************************** */
 

@@ -68,7 +68,7 @@ function addCategory() {
 var addProductBtn = document.getElementById("addProductBtn");
 addProductBtn.addEventListener("click", addCategory);
 
-/************************************ ADD CATEGORIES */
+/************************************ End  ADD CATEGORIES */
 // adding product popup
 function openPopup() {
   document.getElementById("popup").style.display = "flex";

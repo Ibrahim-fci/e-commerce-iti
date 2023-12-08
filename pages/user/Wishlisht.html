@@ -37,6 +37,15 @@
         </a>
 
         <div class="header-actions">
+          <button class="header-action-btn" onclick="signout()">
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+            <p class="header-action-label">Sign out</p>
+          </button>
+
+          <button class="header-action-btn"></button>
+
+          </button>
           <button class="header-action-btn" id="Cart" onclick="showCart()">
             <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
 
@@ -44,6 +53,9 @@
 
             <div class="btn-badge green" id="badge"></div>
           </button>
+
+
+          
         </div>
 
         <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
@@ -100,7 +112,7 @@
 
     <!-- start all products -->
     <div class="parent">
-      <h2 class="h2 products-title">Shopping Cart</h2>
+      <h2 class="h2 products-title">Wish List</h2>
       <div class="products-line"></div>
       <br />
       <div class="products"></div>

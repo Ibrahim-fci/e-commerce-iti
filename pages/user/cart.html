@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Products</title>
+    <title>Cart</title>
     <link rel="shortcut icon" href="../../favicon.svg" type="image/svg+xml" />
 
     <!-- 
@@ -38,6 +38,16 @@
         </a>
 
         <div class="header-actions">
+          <button class="header-action-btn" onclick="signout()">
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+            <p class="header-action-label">Sign out</p>
+          </button>
+
+          <button class="header-action-btn"></button>
+
+          </button>
+
           <button
             class="header-action-btn"
             id="Wishlisht"
@@ -49,6 +59,8 @@
 
             <div class="btn-badge" id="Wishlishtbadge"></div>
           </button>
+
+          
         </div>
 
         <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">

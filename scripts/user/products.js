@@ -1,39 +1,39 @@
 ////////open fake api to retrive data///////////////////
 
-function getProducts() {
-  var xHTTP = new XMLHttpRequest();
-  xHTTP.open("GET", "https://fakestoreapi.com/products", true);
-  xHTTP.send();
-  xHTTP.onreadystatechange = function () {
-    if (this.status == 200 && this.readyState == 4) {
-      var data = JSON.parse(this.responseText);
-      localStorage.setItem("products", JSON.stringify(data));
-      var extractedProducts = data.map(function (product) {
-        return {
-          id: product.id,
-          title: product.title,
-          image: product.image,
-          category: product.category,
-          description: product.description,
-          price: product.price,
-          stockQuantity: product.rating.count,
-        };
-      });
-      localStorage.setItem("product_list", JSON.stringify(extractedProducts));
+// function getProducts() {
+//   var xHTTP = new XMLHttpRequest();
+//   xHTTP.open("GET", "https://fakestoreapi.com/products", true);
+//   xHTTP.send();
+//   xHTTP.onreadystatechange = function () {
+//     if (this.status == 200 && this.readyState == 4) {
+//       var data = JSON.parse(this.responseText);
+//       localStorage.setItem("products", JSON.stringify(data));
+//       var extractedProducts = data.map(function (product) {
+//         return {
+//           id: product.id,
+//           title: product.title,
+//           image: product.image,
+//           category: product.category,
+//           description: product.description,
+//           price: product.price,
+//           stockQuantity: product.rating.count,
+//         };
+//       });
+//       localStorage.setItem("product_list", JSON.stringify(extractedProducts));
 
-      var categories = data.reduce(function (acc, product) {
-        if (!acc.includes(product.category)) {
-          acc.push(product.category);
-        }
-        return acc;
-      }, []);
-      localStorage.setItem("categories", JSON.stringify(categories));
-    }
-  };
-}
+//       var categories = data.reduce(function (acc, product) {
+//         if (!acc.includes(product.category)) {
+//           acc.push(product.category);
+//         }
+//         return acc;
+//       }, []);
+//       localStorage.setItem("categories", JSON.stringify(categories));
+//     }
+//   };
+// }
 
-// Call the function
-getProducts();
+// // Call the function
+// getProducts();
 
 //saved data in local storage and retrive it
 
@@ -100,6 +100,10 @@ function filterProduct(value) {
   buttons.forEach((button) => {
     if (value == button.innerText) {
       searchitem(value, products);
+    }
+    else if(button.innerText == 'All')
+    {
+      displayproducts(products);
     }
   });
 }

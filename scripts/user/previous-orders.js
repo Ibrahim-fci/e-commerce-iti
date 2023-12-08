@@ -26,6 +26,8 @@ function renderorders() {
 
   ordersContainer.innerHTML = "";
   usersOrders.map((order) => {
+    totalPrice = 0;
+
     counter++;
     var quantity = 0;
     ordersContainer.innerHTML += `

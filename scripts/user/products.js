@@ -41,6 +41,8 @@ var products = JSON.parse(localStorage.getItem("products"))
   ? JSON.parse(localStorage.getItem("products"))
   : [];
 
+var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
 var productsContainer = document.getElementById("products");
 
 // function to display product searched
@@ -77,7 +79,7 @@ products;
 
 //to search on item
 function searchitem(title, searcharr) {
-  if (title === "") {
+  if (title === "all") {
     displayproducts(products);
   } else {
     let arr = searcharr.filter((item) => item.category === title);
@@ -123,7 +125,12 @@ cart.addEventListener("click", function () {
 function addtocart(id) {
   let choosenItem = products.find((product) => product.id === id);
   // addeditems = [...addeditems, ...choosenItem];
-  addeditems.push({ ...choosenItem, amount: 1 });
+  isLogin();
+  addeditems.push({
+    ...choosenItem,
+    quantity: 1,
+    userEmail: currentUser.email,
+  });
   localStorage.setItem("productsincart", JSON.stringify(addeditems));
   productnum.innerHTML = addeditems.length;
 }
@@ -149,4 +156,16 @@ function addtoWishlisht(id) {
 function signout() {
   localStorage.removeItem("currentUser");
   window.location.href = "../../pages/login.html";
+}
+
+// check is login
+function isLogin() {
+  // check if user logged in
+  var currentUser = JSON.parse(localStorage.getItem("currentUser"))
+    ? JSON.parse(localStorage.getItem("currentUser"))
+    : null;
+
+  if (!currentUser || currentUser == null) {
+    location.href = "../../pages/login.html";
+  }
 }

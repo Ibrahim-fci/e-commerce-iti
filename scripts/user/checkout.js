@@ -3,14 +3,19 @@ var currentUser = JSON.parse(localStorage.getItem("currentUser"))
   ? JSON.parse(localStorage.getItem("currentUser"))
   : null;
 
+if (!currentUser || currentUser == null) {
+  location.href = "../../pages/login.html";
+}
+
 // get orders collections
 var orders = JSON.parse(localStorage.getItem("orders"))
   ? JSON.parse(localStorage.getItem("orders"))
   : [];
 
-if (!currentUser || currentUser == null) {
-  location.href = "../../pages/login.html";
-}
+// get orders collections
+var cart = JSON.parse(localStorage.getItem("productsincart"))
+  ? JSON.parse(localStorage.getItem("productsincart"))
+  : [];
 
 //  set the current user default user
 var userName = document.getElementById("name");
@@ -36,8 +41,12 @@ function createOrder() {
   localStorage.setItem("orders", JSON.stringify(orders));
 
   // free user cart
+  cart = cart.filter((item) => item.email != currentUser.email);
+  localStorage.setItem("productsincart", JSON.stringify(cart));
 
   // redirect to all order page
+
+  location.href = "../../pages/user/previous-orders.html";
 }
 
 var placeOrderBtn = document.getElementById("placeOrderBtn");

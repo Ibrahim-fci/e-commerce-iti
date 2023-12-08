@@ -114,7 +114,11 @@ function acceptOrder(id) {
       order.status = "accepted";
 
       // decrease stock
-      product.quantity -= quantity;
+      products = updateObjectById(products, product.id, {
+        quantity: parseInt(product.quantity) - parseInt(quantity),
+      });
+
+      // product.quantity -= quantity;
       localStorage.setItem("products", JSON.stringify(products));
     });
   } else {
@@ -123,8 +127,11 @@ function acceptOrder(id) {
       quantity = product.quantity;
       product = getProduct(product.id);
 
+      products = updateObjectById(products, product.id, {
+        quantity: parseInt(product.quantity) + parseInt(quantity),
+      });
       // increase stock
-      product.quantity += quantity;
+      // product.quantity += quantity;
       localStorage.setItem("products", JSON.stringify(products));
     });
   }
@@ -132,4 +139,14 @@ function acceptOrder(id) {
   localStorage.setItem("orders", JSON.stringify(orders));
 
   window.location.reload();
+}
+
+function updateObjectById(array, idToUpdate, updatedValues) {
+  return array.map((obj) => {
+    if (obj.id === idToUpdate) {
+      // If the object's ID matches the ID to update, merge it with updated values
+      return { ...obj, ...updatedValues };
+    }
+    return obj; // Otherwise, return the original object
+  });
 }

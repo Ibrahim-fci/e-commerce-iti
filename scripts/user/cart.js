@@ -72,3 +72,10 @@ function updateCartProductQuantity(id, quantity) {
 function redirectToPage() {
   window.location = "./checkout.html";
 }
+
+/******************************************************** Sign Out FUNCTION **************************************** */
+
+function signout() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "../../pages/login.html";
+}

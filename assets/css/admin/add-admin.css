@@ -1,0 +1,83 @@
+#userssContainer {
+    width: 100%;
+    margin: 6em auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+
+}
+
+#userssContainer .user-item {
+    width: 100%;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: .5s;
+
+}
+
+.addAdminBtn {
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--middle-blue-green);
+    color: var(--white);
+    cursor: pointer;
+    transition: .5s;
+    padding: .6em;
+
+}
+
+.user-details {
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+}
+
+
+/* ********************** Media query section ******************************* */
+
+@media only screen and (max-width: 475px) {
+    #userssContainer {
+
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+
+
+    }
+}
+
+
+/* mobile */
+@media only screen and (min-width: 475px) and (max-width: 768px) {
+    #userssContainer {
+
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+
+
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    #userssContainer {
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+
+    }
+}

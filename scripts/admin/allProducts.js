@@ -51,7 +51,7 @@ function getAllProducts() {
     : []);
 }
 
-// get a product func
+// get a product by id
 function getProduct(id) {
   var products = getAllProducts();
   return products.find((product) => product.id == id);

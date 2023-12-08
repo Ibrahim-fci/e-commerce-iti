@@ -87,3 +87,7 @@ function getProduct(id) {
 function showCart() {
   location.href = "../../pages/user/cart.html";
 }
+
+function showWishList() {
+  location.href = "../../pages/user/Wishlisht.html";
+}
